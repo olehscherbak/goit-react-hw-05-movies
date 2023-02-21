@@ -6,6 +6,7 @@ export default function Home() {
   const [trendingList, setTrendingList] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   useEffect(() => {
+    console.log(trendingList, isLoading);
     setIsLoading(true);
     fetch(
       'https://api.themoviedb.org/3/trending/all/day?api_key=3fffdfe7cecd1a69958de862b7a37291'
