@@ -11,8 +11,8 @@ import Reviews from 'pages/MovieDetails/Reviews/Reviews';
 export const App = () => {
   return (
     <BrowserRouter basename="goit-react-hw-05-movies">
-      <Header />
       <Layout>
+        <Header />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/movies" element={<Movies />} />

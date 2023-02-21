@@ -1,11 +1,14 @@
+import Loader from 'components/Loader/Loader';
 import { useState, useEffect } from 'react';
-import { toast } from 'react-toastify';
+import { Link } from 'react-router-dom';
+import { GiFilmStrip } from 'react-icons/gi';
+import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import css from './Home.module.css';
 
 export default function Home() {
   const [trendingList, setTrendingList] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  console.log(trendingList, isLoading);
   useEffect(() => {
     setIsLoading(true);
     fetch(
@@ -14,16 +17,32 @@ export default function Home() {
       .then(response => response.json())
       .then(res => {
         setTrendingList(res.results);
-        console.log(res.results);
       })
-      .catch(() => toast.console.error('Oops, something went wrong...'))
+      .catch(() => toast.error('Oops, something went wrong...'))
       .finally(() => setIsLoading(false));
   }, []);
 
   return (
     <>
       <h2>Trending today</h2>
-      {/* <ToastContainer /> */}
+      {trendingList.length > 0 && (
+        <ul className={css.film_list}>
+          {trendingList.map(({ id, original_title, original_name }) => {
+            return (
+              <li key={id} className={css.film_item}>
+                {
+                  <Link to={`/movies/${id}`} className={css.film_link}>
+                    <GiFilmStrip size={'0.8em'} className={css.film_icon} />
+                    {original_title || original_name}
+                  </Link>
+                }
+              </li>
+            );
+          })}
+        </ul>
+      )}
+      {isLoading && <Loader />}
+      <ToastContainer />
     </>
   );
 }
