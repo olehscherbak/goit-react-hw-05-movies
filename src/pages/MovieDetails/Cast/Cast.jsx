@@ -1,7 +1,8 @@
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import css from './Cast.module.css';
 import { toast, ToastContainer } from 'react-toastify';
+import Loader from 'components/Loader/Loader';
+import css from './Cast.module.css';
 
 export default function Cast() {
   const [cast, setCast] = useState([]);
@@ -21,9 +22,8 @@ export default function Cast() {
       .catch(() => toast.error('Oops, something went wrong...'))
       .finally(() => setIsLoading(false));
   }, [movieId]);
-
   const { name, profile_path, character, order } = cast;
-  console.log(cast);
+
   return (
     <>
       <ul className={css.cast_list}>
@@ -43,6 +43,7 @@ export default function Cast() {
           </li>;
         })}
       </ul>
+      {isLoading && <Loader />}
       <ToastContainer />
     </>
   );
