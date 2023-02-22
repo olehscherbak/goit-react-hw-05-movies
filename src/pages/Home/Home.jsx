@@ -12,7 +12,7 @@ export default function Home() {
   useEffect(() => {
     setIsLoading(true);
     fetch(
-      'https://api.themoviedb.org/3/trending/all/day?api_key=3fffdfe7cecd1a69958de862b7a37291'
+      'https://api.themoviedb.org/3/trending/movie/day?api_key=3fffdfe7cecd1a69958de862b7a37291'
     )
       .then(response => response.json())
       .then(res => {

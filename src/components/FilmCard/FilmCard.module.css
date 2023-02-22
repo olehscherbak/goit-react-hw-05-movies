@@ -1,18 +1,40 @@
 .film_card {
   display: flex;
+  flex-direction: column;
   padding-top: 16px;
 }
 
-.poster {
-  width: 500px;
-  height: 280px;
-  border: 1px solid black;
-}
 .poster_img {
-  height: 100%;
-  /* object-fit: contain; */
+  width: 90vw;
+  border-radius: 0.5em;
 }
 
 .film_description {
   margin-left: 1em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.8em;
+}
+
+.film_description p {
+  margin: 0;
+}
+
+.title {
+  font-weight: bold;
+}
+
+.overview {
+  text-align: justify;
+}
+
+@media screen and (min-width: 1200px) {
+  .film_card {
+    flex-direction: row;
+  }
+  .poster_img {
+    width: 50vw;
+    max-width: 600px;
+  }
 }

@@ -5,6 +5,7 @@ export default function FilmCard({
   title = '',
   release_date,
   backdrop_path,
+  poster_path,
   vote_average,
   genres,
   overview,
@@ -24,14 +25,23 @@ export default function FilmCard({
         />
       </div>
       <div className={css.film_description}>
-        <h2>{film_title}</h2>
-        <p>{release_date && new Date(release_date).getFullYear()}</p>
-        <p>Rating: {vote_average}</p>
+        <h2>{`${film_title} (${
+          release_date && new Date(release_date).getFullYear()
+        })`}</h2>
         <p>
-          Genres:{' '}
+          <span className={css.title}>Rating: </span>
+          {vote_average}
+        </p>
+        <p>
+          <span className={css.title}>Genres: </span>
           {genres && genres.map(genre => genre.name.toLowerCase()).join(', ')}
         </p>
-        <p>{overview}</p>
+
+        <p className={css.overview}>
+          <span className={css.title}>Overview: </span>
+          <br />
+          {overview}
+        </p>
       </div>
     </div>
   );
