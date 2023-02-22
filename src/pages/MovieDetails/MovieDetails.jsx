@@ -24,7 +24,6 @@ export default function MovieDetails() {
       .catch(() => toast.error('Oops, something went wrong...'))
       .finally(() => setIsLoading(false));
   }, [movieId]);
-  console.log(movieId);
   const {
     name,
     title,
@@ -39,6 +38,7 @@ export default function MovieDetails() {
     <>
       {filmData && !isLoading && (
         <FilmCard
+          movieId={movieId}
           name={name}
           title={title}
           release_date={release_date}
