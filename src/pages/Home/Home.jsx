@@ -27,13 +27,13 @@ export default function Home() {
       <h2>Trending today</h2>
       {trendingList.length > 0 && (
         <ul className={css.film_list}>
-          {trendingList.map(({ id, original_title, original_name }) => {
+          {trendingList.map(({ id, title, name }) => {
             return (
               <li key={id} className={css.film_item}>
                 {
                   <Link to={`/movies/${id}`} className={css.film_link}>
                     <GiFilmStrip size={'0.8em'} className={css.film_icon} />
-                    {original_title || original_name}
+                    {title || name}
                   </Link>
                 }
               </li>

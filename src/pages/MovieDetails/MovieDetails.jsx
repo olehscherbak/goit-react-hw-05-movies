@@ -2,11 +2,12 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import FilmCard from 'components/FilmCard/FilmCard';
 import Loader from 'components/Loader/Loader';
 import css from './MovieDetails.module.css';
 
 export default function MovieDetails() {
-  const [filmData, setFilmData] = useState(null);
+  const [filmData, setFilmData] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const { movieId } = useParams();
   useEffect(() => {
@@ -23,11 +24,35 @@ export default function MovieDetails() {
       .catch(() => toast.error('Oops, something went wrong...'))
       .finally(() => setIsLoading(false));
   }, [movieId]);
+  console.log(movieId);
+  const {
+    name,
+    title,
+    release_date,
+    backdrop_path,
+    vote_average,
+    genres,
+    overview,
+  } = filmData;
   return (
     <>
+      {filmData && !isLoading && (
+        <FilmCard
+          name={name}
+          title={title}
+          release_date={release_date}
+          backdrop_path={backdrop_path}
+          vote_average={vote_average}
+          genres={genres}
+          overview={overview}
+        />
+      )}
       <h3 className={css.header}>MovieDetails</h3>
+      {filmData && <p>original_title: {filmData.original_title}</p>}
+      {filmData && <p>title: {filmData.title}</p>}
+      {filmData && <p>original_name: {filmData.original_name}</p>}
+      {filmData && <p>name: {filmData.name}</p>}
       {isLoading && <Loader />}
-      {filmData && <p>{filmData.original_title}</p>}
       <ToastContainer />
     </>
   );
