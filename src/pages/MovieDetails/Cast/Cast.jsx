@@ -22,25 +22,33 @@ export default function Cast() {
       .catch(() => toast.error('Oops, something went wrong...'))
       .finally(() => setIsLoading(false));
   }, [movieId]);
-  const { name, profile_path, character, order } = cast;
-
+  // const { name, profile_path, character, order } = cast;
   return (
     <>
       <ul className={css.cast_list}>
         {cast.map(({ order, name, profile_path, character }) => {
-          <li key={order} className={css.cast_item}>
-            <img
-              src={
-                profile_path
-                  ? 'https://image.tmdb.org/t/p/w500' + profile_path
-                  : '../no-image.png'
-              }
-              alt="{name}"
-            />
-            <p>{name}</p>
-            <p>as</p>
-            <p>{character}</p>
-          </li>;
+          return (
+            <li key={order} className={css.cast_item}>
+              <img
+                src={
+                  profile_path
+                    ? 'https://image.tmdb.org/t/p/w500' + profile_path
+                    : '../../no-person-image.png'
+                }
+                alt={name}
+                className={css.cast_item_img}
+              />
+              <div className={css.cast_item_description}>
+                <p className={css.cast_item_text}>{name}</p>
+                {character && (
+                  <>
+                    <p className={css.cast_item_text}>as</p>
+                    <p className={css.cast_item_text}>{character}</p>
+                  </>
+                )}
+              </div>
+            </li>
+          );
         })}
       </ul>
       {isLoading && <Loader />}
