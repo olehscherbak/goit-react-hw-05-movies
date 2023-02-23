@@ -1,5 +1,7 @@
+import { Suspense } from 'react';
 import { Link, NavLink, Outlet, useLocation } from 'react-router-dom';
 import { ImArrowLeft } from 'react-icons/im';
+import LazyLoader from 'components/LazyLoader/LazyLoader';
 import PropTypes, { shape } from 'prop-types';
 
 import css from './FilmCard.module.css';
@@ -72,7 +74,9 @@ export default function FilmCard({
           </NavLink>
         </span>
       </div>
-      <Outlet />
+      <Suspense fallback={<LazyLoader />}>
+        <Outlet />
+      </Suspense>
     </>
   );
 }
