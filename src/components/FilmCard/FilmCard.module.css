@@ -5,6 +5,18 @@
   gap: 1em;
 }
 
+.return_link {
+  margin-top: 1em;
+  margin-left: 1em;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.return_link span {
+  margin-left: 0.3em;
+}
+
 .poster {
   box-shadow: rgba(0, 0, 0, 0.45) 0px 16px 12px -12px;
 }

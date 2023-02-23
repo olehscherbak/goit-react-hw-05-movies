@@ -1,6 +1,6 @@
 import Loader from 'components/Loader/Loader';
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { GiFilmStrip } from 'react-icons/gi';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -9,6 +9,7 @@ import css from './Home.module.css';
 export default function Home() {
   const [trendingList, setTrendingList] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const location = useLocation();
   useEffect(() => {
     setIsLoading(true);
     fetch(
@@ -31,7 +32,11 @@ export default function Home() {
             return (
               <li key={id} className={css.film_item}>
                 {
-                  <Link to={`/movies/${id}`} className={css.film_link}>
+                  <Link
+                    to={`/movies/${id}`}
+                    state={{ from: location }}
+                    className={css.film_link}
+                  >
                     <GiFilmStrip size={'0.8em'} className={css.film_icon} />
                     {title || name}
                   </Link>
