@@ -1,4 +1,5 @@
 import { BsSearch } from 'react-icons/bs';
+import PropTypes from 'prop-types';
 import css from './SearchForm.module.css';
 
 export default function SearchForm({ onSubmit }) {
@@ -23,3 +24,7 @@ export default function SearchForm({ onSubmit }) {
     </form>
   );
 }
+
+SearchForm.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+};

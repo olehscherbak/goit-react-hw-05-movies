@@ -22,6 +22,9 @@
   margin-bottom: 0.3em;
   font-size: 1.2em;
 }
+.author_name {
+  margin-left: 0.3em;
+}
 
 .reviews_item_text {
   margin-top: 0;

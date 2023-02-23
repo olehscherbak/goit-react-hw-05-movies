@@ -1,4 +1,6 @@
 import { NavLink, Outlet } from 'react-router-dom';
+import PropTypes, { shape } from 'prop-types';
+
 import css from './FilmCard.module.css';
 
 export default function FilmCard({
@@ -7,7 +9,6 @@ export default function FilmCard({
   title = '',
   release_date,
   backdrop_path,
-  poster_path,
   vote_average,
   genres,
   overview,
@@ -63,3 +64,20 @@ export default function FilmCard({
     </>
   );
 }
+
+FilmCard.propTypes = {
+  movieId: PropTypes.string.isRequired,
+  name: PropTypes.string,
+  title: PropTypes.string,
+  release_date: PropTypes.string,
+  backdrop_path: PropTypes.string,
+  poster_path: PropTypes.string,
+  vote_average: PropTypes.number,
+  genres: PropTypes.arrayOf(
+    shape({
+      id: PropTypes.number.isRequired,
+      name: PropTypes.string.isRequired,
+    })
+  ),
+  overview: PropTypes.string,
+};

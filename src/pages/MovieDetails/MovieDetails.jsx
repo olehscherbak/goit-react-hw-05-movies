@@ -29,7 +29,6 @@ export default function MovieDetails() {
     title,
     release_date,
     backdrop_path,
-    poster_path,
     vote_average,
     genres,
     overview,
@@ -43,7 +42,6 @@ export default function MovieDetails() {
           title={title}
           release_date={release_date}
           backdrop_path={backdrop_path}
-          poster_path={poster_path}
           vote_average={vote_average}
           genres={genres}
           overview={overview}

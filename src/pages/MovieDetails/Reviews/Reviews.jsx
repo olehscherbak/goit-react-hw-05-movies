@@ -1,5 +1,6 @@
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import { BsVectorPen } from 'react-icons/bs';
 import { toast, ToastContainer } from 'react-toastify';
 import Loader from 'components/Loader/Loader';
 import css from './Reviews.module.css';
@@ -31,7 +32,10 @@ export default function Reviews() {
             const reviewDate = new Date(created_at).toLocaleString();
             return (
               <li key={id} className={css.reviews_item}>
-                <h2 className={css.reviews_item_author}>{author}</h2>
+                <h2 className={css.reviews_item_author}>
+                  <BsVectorPen size={'0.8em'} />
+                  <span className={css.author_name}>{author}</span>
+                </h2>
                 <p className={css.reviews_item_text}>{content}</p>
                 <p className={css.reviews_item_date}>{reviewDate}</p>
               </li>
