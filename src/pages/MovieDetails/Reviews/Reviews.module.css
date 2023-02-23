@@ -39,6 +39,10 @@
   font-weight: bold;
 }
 
+.reviews_item_date_text {
+  margin-left: 0.3em;
+}
+
 .error_message {
   font-size: 1.3em;
 }

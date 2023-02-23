@@ -1,6 +1,7 @@
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { BsVectorPen } from 'react-icons/bs';
+import { TfiAlarmClock } from 'react-icons/tfi';
 import { toast, ToastContainer } from 'react-toastify';
 import Loader from 'components/Loader/Loader';
 import css from './Reviews.module.css';
@@ -37,7 +38,12 @@ export default function Reviews() {
                   <span className={css.author_name}>{author}</span>
                 </h2>
                 <p className={css.reviews_item_text}>{content}</p>
-                <p className={css.reviews_item_date}>{reviewDate}</p>
+                <p className={css.reviews_item_date}>
+                  <TfiAlarmClock size={'0.8em'} />
+                  <span className={css.reviews_item_date_text}>
+                    {reviewDate}
+                  </span>
+                </p>
               </li>
             );
           })}
