@@ -1,0 +1,41 @@
+.reviews_list {
+  padding: 1em;
+  list-style: none;
+  border-radius: 0.3em;
+  background-color: #87cefa;
+  box-shadow: rgba(0, 0, 0, 0.45) 0px 16px 12px -12px;
+}
+
+.reviews_item {
+  padding: 1em;
+  border-radius: 0.3em;
+  background-color: #a8dcff;
+  box-shadow: rgba(0, 0, 0, 0.45) 0px 16px 12px -12px;
+}
+
+.reviews_item:not(:last-child) {
+  margin-bottom: 1em;
+}
+
+.reviews_item_author {
+  margin-top: 0;
+  margin-bottom: 0.3em;
+  font-size: 1.2em;
+}
+
+.reviews_item_text {
+  margin-top: 0;
+  margin-bottom: 0.5em;
+  text-align: justify;
+  word-wrap: break-word;
+}
+
+.reviews_item_date {
+  margin: 0;
+  font-size: 0.9em;
+  font-weight: bold;
+}
+
+.error_message {
+  font-size: 1.3em;
+}
